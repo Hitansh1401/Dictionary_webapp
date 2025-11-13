@@ -120,5 +120,3 @@ Contributions are welcome! If you have suggestions for improvements, bug fixes, 
 
 This project is open source and available under the MIT License. See the `LICENSE` file for more details.
 ```
-
-Now, when you render this `README.md` file (e.g., on GitHub), the image will be displayed prominently at the top, giving a great first impression of your project!
