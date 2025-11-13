@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dictionary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>My Dictionary</h1>
+        <form action="/" method="POST">
+            <input type="text" name="word" placeholder="Enter a word..." required>
+            <button type="submit">Look Up</button>
+        </form>
+
+        {% if word_data %}
+            <div class="word-card">
+                <h2>{{ word_data.word }}</h2>
+                {% for meaning in word_data.meanings %}
+                    <h3>{{ meaning.partOfSpeech }}</h3>
+                    <ul>
+                        {% for definition in meaning.definitions %}
+                            <li>{{ definition.definition }}</li>
+                            {% if definition.example %}
+                                <p class="example">Example: "{{ definition.example }}"</p>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            </div>
+        {% elif error_message %}
+            <p class="error">{{ error_message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
